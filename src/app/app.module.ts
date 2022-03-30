@@ -7,19 +7,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { InformeComponent } from './pages/informe/informe.component';
 import { InsumoComponent } from './pages/insumo/insumo.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InformeComponent,
-    InsumoComponent
+    InsumoComponent,
+    DialogoInfomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

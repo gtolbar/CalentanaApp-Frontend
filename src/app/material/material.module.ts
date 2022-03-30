@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -18,7 +19,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatSidenavModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
 
   ],
   imports: [
