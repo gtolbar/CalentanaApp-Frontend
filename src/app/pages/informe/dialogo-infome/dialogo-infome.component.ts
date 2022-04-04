@@ -26,4 +26,17 @@ export class DialogoInfomeComponent implements OnInit {
     });
   }
 
+  descargarInforme(){
+    this.estadoInsumoService.descargarInforme().subscribe(data=>{
+      let date: Date = new Date();
+      const url = window.URL.createObjectURL(data);
+      const a= document.createElement('a');
+      a.setAttribute('style','display:none');
+      document.body.appendChild(a);
+      a.href=url;
+      a.download='Informe-'+date.getDate()+'-'+date.getMonth()+1+'-'+date.getFullYear()+'.pdf';
+      a.click();
+    });
+  }
+
 }

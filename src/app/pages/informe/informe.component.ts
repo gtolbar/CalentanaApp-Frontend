@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstadoInsumoService } from 'src/app/_service/estado-insumo.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
 
 
@@ -33,6 +33,8 @@ export class InformeComponent implements OnInit {
   }
 
   openDialogInfo(){
-    this.dialog.open(DialogoInfomeComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.height='90%';
+    this.dialog.open(DialogoInfomeComponent, dialogConfig);
   }
 }
