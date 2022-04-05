@@ -12,13 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     InformeComponent,
     InsumoComponent,
-    DialogoInfomeComponent
+    DialogoInfomeComponent,
   ],
   imports: [
     BrowserModule,

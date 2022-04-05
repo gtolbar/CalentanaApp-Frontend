@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EstadoInsumoService } from 'src/app/_service/estado-insumo.service';
+import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
 

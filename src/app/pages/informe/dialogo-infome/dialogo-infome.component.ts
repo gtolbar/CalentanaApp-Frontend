@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EstadoInsumoService } from 'src/app/_service/estado-insumo.service';
+import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
 
 @Component({
   selector: 'app-dialogo-infome',

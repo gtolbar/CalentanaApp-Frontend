@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { EstadoInsumo } from '../_model/estado_insumo';
+import { EstadoInsumo } from '../_model/estadoInsumo';
 import { GenericService } from './generic.service';
 
 @Injectable({
