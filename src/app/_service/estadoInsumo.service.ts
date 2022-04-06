@@ -22,12 +22,6 @@ export class EstadoInsumoService extends GenericService<EstadoInsumo>{
     );
   }
 
-  descargarInforme(){
-    return this.http.get(`${environment.HOST}/estado_insumos/generarReporte`,{
-      responseType:'blob' //<---Respuesta en binario
-    });
-  }
-
   //get Subjects
   getEstadoInsumoCambio() {
     return this.estadoInsumoCambio.asObservable();

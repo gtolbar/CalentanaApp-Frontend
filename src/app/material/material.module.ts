@@ -7,6 +7,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomDateAdapter } from './custom-adapter';
 
 
 
@@ -20,11 +24,19 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     MatDividerModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+
 
   ],
   imports: [
     CommonModule
+  ],
+  providers:[
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: DateAdapter, useClass: CustomDateAdapter }
   ]
 })
 export class MaterialModule { }

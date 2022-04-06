@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
+import { InformeService } from 'src/app/_service/informe.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -11,30 +12,26 @@ import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.componen
 })
 export class InformeComponent implements OnInit {
 
+  form: FormGroup;
+  maxFecha: Date = new Date();
+
+
   constructor(
-    private estadoInsumoService:EstadoInsumoService,
+    private informeService:InformeService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-  }
-
-  descargarInforme(){
-    this.estadoInsumoService.descargarInforme().subscribe(data=>{
-      let date: Date = new Date();
-      const url = window.URL.createObjectURL(data);
-      const a= document.createElement('a');
-      a.setAttribute('style','display:none');
-      document.body.appendChild(a);
-      a.href=url;
-      a.download='Informe-'+date.getDate()+'-'+date.getMonth()+1+'-'+date.getFullYear()+'.pdf';
-      a.click();
+    this.form = new FormGroup({
+      'fechaInicio': new FormControl(''),
+      'fechaFinal': new FormControl('')
     });
   }
 
   openDialogInfo(){
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.data=this.form;
     dialogConfig.height='90%';
-    this.dialog.open(DialogoInfomeComponent, dialogConfig);
+    this.dialog.open(DialogoInfomeComponent,dialogConfig);
   }
 }

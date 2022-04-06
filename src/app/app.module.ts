@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-i
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
