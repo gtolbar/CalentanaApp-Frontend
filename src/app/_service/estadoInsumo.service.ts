@@ -40,4 +40,6 @@ export class EstadoInsumoService extends GenericService<EstadoInsumo>{
     this.mensajeCambio.next(mensaje);
   }
 
+  
+
 }

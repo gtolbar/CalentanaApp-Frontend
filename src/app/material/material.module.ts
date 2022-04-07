@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -14,10 +15,9 @@ import { CustomDateAdapter } from './custom-adapter';
 
 
 
-
 @NgModule({
   declarations: [],
-  exports:[
+  exports: [
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -25,10 +25,10 @@ import { CustomDateAdapter } from './custom-adapter';
     MatDividerModule,
     MatMenuModule,
     MatDialogModule,
+    MatInputModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-
 
   ],
   imports: [

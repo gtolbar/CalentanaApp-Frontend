@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
 import { InformeService } from 'src/app/_service/informe.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -19,18 +21,22 @@ export class InformeComponent implements OnInit {
   chart: any;
 
   constructor(
+
     private informeService:InformeService,
     public dialog: MatDialog,
+
 
   ) {
     Chart.register(...registerables);
   }
+
 
   ngOnInit(): void {
 
     this.form = new FormGroup({
       'fechaInicio': new FormControl(moment(this.maxFecha).subtract(7,'day').format('YYYY-MM-DD')),
       'fechaFinal': new FormControl(moment(this.maxFecha).format('YYYY-MM-DD'))
+
     });
     this.generarCanvas();
 
