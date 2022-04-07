@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
 
 
@@ -12,22 +12,22 @@ import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.componen
 export class InformeComponent implements OnInit {
 
   constructor(
-    private estadoInsumoService:EstadoInsumoService,
+    private estadoInsumoService: EstadoInsumoService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
   }
 
-  descargarInforme(){
-    this.estadoInsumoService.descargarInforme().subscribe(data=>{
+  descargarInforme() {
+    this.estadoInsumoService.descargarInforme().subscribe(data => {
       let date: Date = new Date();
       const url = window.URL.createObjectURL(data);
-      const a= document.createElement('a');
-      a.setAttribute('style','display:none');
+      const a = document.createElement('a');
+      a.setAttribute('style', 'display:none');
       document.body.appendChild(a);
-      a.href=url;
-      a.download='Informe-'+date.getDate()+'-'+date.getMonth()+1+'-'+date.getFullYear()+'.pdf';
+      a.href = url;
+      a.download = 'Informe-' + date.getDate() + '-' + date.getMonth() + 1 + '-' + date.getFullYear() + '.pdf';
       a.click();
     });
   }
