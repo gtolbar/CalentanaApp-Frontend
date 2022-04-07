@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { InformeService } from 'src/app/_service/informe.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dialogo-infome',
@@ -11,12 +14,17 @@ export class DialogoInfomeComponent implements OnInit {
   pdfSrc:string;
 
   constructor(
-    private estadoInsumoService:EstadoInsumoService,
+    private informeService:InformeService,
+    @Inject(MAT_DIALOG_DATA) private data: FormGroup
   ) { }
 
   ngOnInit(): void {
 
-    this.estadoInsumoService.descargarInforme().subscribe(data=>{
+    let fecha1 =this.data.value['fechaInicio'];
+    fecha1=fecha1 != null ? moment(fecha1).format('YYYY-MM-DD') : '';
+    let fecha2 = this.data.value['fechaFinal'];
+    fecha2=fecha2 != null ? moment(fecha2).format('YYYY-MM-DD') : '';
+    this.informeService.generarReporte(fecha1,fecha2).subscribe(data=>{
       let reader = new FileReader();
       reader.onload=(e:any)=>{
         this.pdfSrc=e.target.result;
@@ -24,10 +32,16 @@ export class DialogoInfomeComponent implements OnInit {
       }
       reader.readAsArrayBuffer(data);
     });
+
   }
 
   descargarInforme(){
-    this.estadoInsumoService.descargarInforme().subscribe(data=>{
+    let fecha1 =this.data.value['fechaInicio'];
+    fecha1=fecha1 != null ? moment(fecha1).format('YYYY-MM-DD') : '';
+    let fecha2 = this.data.value['fechaFinal'];
+    fecha2=fecha2 != null ? moment(fecha2).format('YYYY-MM-DD') : '';
+
+    this.informeService.generarReporte(fecha1,fecha2).subscribe(data=>{
       let date: Date = new Date();
       const url = window.URL.createObjectURL(data);
       const a= document.createElement('a');

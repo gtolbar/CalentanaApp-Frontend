@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EstadoInsumoService } from 'src/app/_service/estadoInsumo.service';
-import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
+
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+
 import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.component';
+import { InformeService } from 'src/app/_service/informe.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Chart, registerables } from 'chart.js';
+import * as moment from 'moment';
 
 
 @Component({
@@ -11,30 +16,71 @@ import { DialogoInfomeComponent } from './dialogo-infome/dialogo-infome.componen
 })
 export class InformeComponent implements OnInit {
 
-  constructor(
-    private estadoInsumoService: EstadoInsumoService,
-    public dialog: MatDialog
-  ) { }
+  form: FormGroup;
+  maxFecha: Date = new Date();
+  chart: any;
 
-  ngOnInit(): void {
+  constructor(
+
+    private informeService:InformeService,
+    public dialog: MatDialog,
+
+
+  ) {
+    Chart.register(...registerables);
   }
 
-  descargarInforme() {
-    this.estadoInsumoService.descargarInforme().subscribe(data => {
-      let date: Date = new Date();
-      const url = window.URL.createObjectURL(data);
-      const a = document.createElement('a');
-      a.setAttribute('style', 'display:none');
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = 'Informe-' + date.getDate() + '-' + date.getMonth() + 1 + '-' + date.getFullYear() + '.pdf';
-      a.click();
+
+  ngOnInit(): void {
+
+    this.form = new FormGroup({
+      'fechaInicio': new FormControl(moment(this.maxFecha).subtract(7,'day').format('YYYY-MM-DD')),
+      'fechaFinal': new FormControl(moment(this.maxFecha).format('YYYY-MM-DD'))
+
     });
+    this.generarCanvas();
+
   }
 
   openDialogInfo(){
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.data=this.form;
     dialogConfig.height='90%';
-    this.dialog.open(DialogoInfomeComponent, dialogConfig);
+    this.dialog.open(DialogoInfomeComponent,dialogConfig);
   }
+
+  prueba(){
+    this.chart.destroy();
+    this.generarCanvas();
+  }
+
+  generarCanvas(){
+    let fecha1 =this.form.value['fechaInicio'];
+    fecha1=fecha1 != "" ? moment(fecha1).format('YYYY-MM-DD') : '';
+    let fecha2 = this.form.value['fechaFinal'];
+    fecha2=fecha2 != "" ? moment(fecha2).format('YYYY-MM-DD') : '';
+    this.informeService.listarResumen(fecha1,fecha2).subscribe(data=>{
+      let cantidades= data.map(x=>x.cantidad);
+      let fechas= data.map(x=>x.fecha);
+      console.log(cantidades);
+      console.log(fechas);
+      this.chart = new Chart('canvas', {
+        type: 'line',
+        data: {
+          labels: fechas,
+          datasets: [
+            {
+              label: 'Cantidad',
+              data: cantidades,
+              borderColor: '#3cba9f',
+              fill: false,
+              tension: 0.1
+            }
+          ]
+        },
+      });
+
+    });
+  }
+
 }

@@ -1,2 +1,25 @@
-<button mat-stroked-button color="primary" style="margin: 10px;" (click)="openDialogInfo()">Ver PDF</button>
-<button mat-stroked-button color="primary" style="margin: 10px;" (click)="descargarInforme()">Descargar PDF</button>
+<form [formGroup]="form" (ngSubmit)="openDialogInfo()">
+  <div style="display: flex; align-items:center;">
+    <mat-form-field appearance="fill" style="margin-top:10px;margin-left:10px;">
+    <mat-label>Ingrese rango de fechas</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [max]="maxFecha">
+      <input matStartDate required="true" formControlName="fechaInicio" placeholder="Fecha inicio" >
+      <input matEndDate formControlName="fechaFinal" placeholder="Fecha final" >
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <button mat-mini-fab color="accent" style="margin-left:15px;margin-bottom: 5px;" type="button" (click)="prueba()"><mat-icon>refresh</mat-icon></button>
+  </div>
+
+  <div [hidden]="!chart" id="graph">
+    <canvas id="canvas">{{chart}}</canvas>
+  </div>
+
+  <div>
+    <button mat-stroked-button color="primary" style="margin-left:10px;" type="submit">generar PDF</button>
+  </div>
+</form>
+
+
+
