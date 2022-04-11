@@ -17,7 +17,13 @@ export class InsumoComponent implements OnInit {
   }
 
   public openDialogAgregarInsumo(){
-    this.dialog.open(GuardarInsumosComponent);
+    let dialogRef = this.dialog.open(GuardarInsumosComponent, {
+    });
+  }
+
+  public openDialogAgregarPrecio(){
+    let dialogRef = this.dialog.open(GuardarInsumosComponent, {
+    });
   }
 
 }

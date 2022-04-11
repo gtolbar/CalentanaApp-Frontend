@@ -14,7 +14,7 @@ export class InsumoService extends GenericService<Insumo>{
   ) {
     super(
       http,
-      `${environment.HOST}/insumo`
+      `${environment.HOST}/insumos`
     );
   }
 }

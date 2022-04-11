@@ -1,7 +1,7 @@
 export class Insumo {
   id: number;
-  proveedor: String;
-  marca: String;
-  producto: String;
-  comentario: String;
+  proveedor: string;
+  marca: string;
+  producto: string;
+  comentario: string;
 }

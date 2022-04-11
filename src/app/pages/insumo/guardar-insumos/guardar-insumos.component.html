@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Agregar Insumo</h2>
 <mat-dialog-content>
-  <form action="">
+  <form [formGroup]="formInsumos">
     <div>
       <div>
         <mat-form-field>
@@ -22,14 +22,14 @@
           <input matInput type="text" formControlName="producto">
         </mat-form-field>
       </div>
-
+<!--
       <div>
         <mat-form-field>
           <mat-label>Precio</mat-label>
           <input matInput type="text" formControlName="producto">
         </mat-form-field>
       </div>
-
+-->
     </div>
   </form>
 
