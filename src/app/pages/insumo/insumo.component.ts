@@ -1,4 +1,5 @@
 import { GuardarInsumosComponent } from './guardar-insumos/guardar-insumos.component';
+import { GuardarPrecioComponent } from './guardar-precio/guardar-precio.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -22,7 +23,7 @@ export class InsumoComponent implements OnInit {
   }
 
   public openDialogAgregarPrecio(){
-    let dialogRef = this.dialog.open(GuardarInsumosComponent, {
+    let dialogRef = this.dialog.open(GuardarPrecioComponent, {
     });
   }
 

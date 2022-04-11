@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
 import { GuardarInsumosComponent } from './pages/insumo/guardar-insumos/guardar-insumos.component';
+import { GuardarPrecioComponent } from './pages/insumo/guardar-precio/guardar-precio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     InsumoComponent,
     DialogoInfomeComponent,
     GuardarInsumosComponent,
-    GestionarInsumosComponent
+    GestionarInsumosComponent,
+    GuardarPrecioComponent
   ],
   imports: [
     BrowserModule,

@@ -42,7 +42,7 @@ export class GuardarInsumosComponent implements OnInit {
     this.registrar(insumo);
   }
 
-  public registrar(insumo: Insumo){
+  private registrar(insumo: Insumo){
     this.servicioInsumo.registrar(insumo).subscribe(res => {
       console.log("Se ha registrado el insumo");
       this.dialogRef.close(true);

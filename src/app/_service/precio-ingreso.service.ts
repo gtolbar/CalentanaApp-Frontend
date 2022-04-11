@@ -1,5 +1,5 @@
+import { PrecioIngreso } from './../_model/precioIngreso';
 import { HttpClient } from '@angular/common/http';
-import { PrecioIngreso } from './../_model/precio-ingreso';
 import { GenericService } from './generic.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,7 @@ export class PrecioIngresoService extends GenericService<PrecioIngreso>{
   ) {
     super(
       http,
-      `${environment.HOST}/Precio-ingreso`
+      `${environment.HOST}/precio_ingresos`
     );
    }
 }
