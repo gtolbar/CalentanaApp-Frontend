@@ -14,8 +14,8 @@ import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/mate
 import { CustomDateAdapter } from './custom-adapter';
 import {MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -31,7 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
   imports: [
     CommonModule

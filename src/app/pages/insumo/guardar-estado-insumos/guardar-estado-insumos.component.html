@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>Agregar Insumo</h2>
+<mat-dialog-content>
+  <form [formGroup]="formEstadoInsumos">
+
+    <div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Accion</mat-label>
+          <select matNativeControl required formControlName="accion">
+            <option value=1>Entrada</option>
+            <option value=0>Salida</option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <mat-label>Producto</mat-label>
+          <mat-select formControlName="idInsumo">
+            <mat-option *ngFor="let item of selectInsumo" [value]="item.id">
+              {{item.producto}}   - {{item.marca}} - {{item.proveedor}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <mat-label>Precio</mat-label>
+          <mat-select formControlName="idPrecioIngreso">
+            <mat-option *ngFor="let item of selectPrecioIngreso" [value]="item.id">
+              {{item.precio}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" formControlName="cantidad">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field>
+          <mat-label>Comentario</mat-label>
+          <textarea matInput type="text" formControlName="comentario"></textarea>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary" [mat-dialog-close]="true" (click)="guardar()"
+    [disabled]="!formEstadoInsumos.valid">Guardar</button>
+</mat-dialog-actions>

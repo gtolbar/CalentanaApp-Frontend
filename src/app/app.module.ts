@@ -1,4 +1,3 @@
-import { GestionarInsumosComponent } from './pages/insumo/gestionar-insumos/gestionar-insumos.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,10 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
+import { GuardarEstadoInsumosComponent } from './pages/insumo/guardar-estado-insumos/guardar-estado-insumos.component';
+import { GestionarInsumosComponent } from './pages/insumo/gestionar-insumos/gestionar-insumos.component';
 import { GuardarInsumosComponent } from './pages/insumo/guardar-insumos/guardar-insumos.component';
 import { GuardarPrecioComponent } from './pages/insumo/guardar-precio/guardar-precio.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogoInfomeComponent,
     GuardarInsumosComponent,
     GestionarInsumosComponent,
-    GuardarPrecioComponent
+    GuardarPrecioComponent,
+    GuardarEstadoInsumosComponent,
   ],
   imports: [
     BrowserModule,

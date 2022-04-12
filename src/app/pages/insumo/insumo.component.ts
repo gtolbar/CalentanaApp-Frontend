@@ -1,3 +1,4 @@
+import { GuardarEstadoInsumosComponent } from './guardar-estado-insumos/guardar-estado-insumos.component';
 import { GuardarInsumosComponent } from './guardar-insumos/guardar-insumos.component';
 import { GuardarPrecioComponent } from './guardar-precio/guardar-precio.component';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +25,10 @@ export class InsumoComponent implements OnInit {
 
   public openDialogAgregarPrecio(){
     let dialogRef = this.dialog.open(GuardarPrecioComponent, {
+    });
+  }
+  public openDialogAgregarMovimiento(){
+    let dialogRef = this.dialog.open(GuardarEstadoInsumosComponent, {
     });
   }
 
