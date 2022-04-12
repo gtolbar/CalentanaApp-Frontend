@@ -25,7 +25,8 @@ export class GuardarPrecioComponent implements OnInit {
 
   private inicializarFormilario(){
     this.formPrecio = new FormGroup({
-      precio: new FormControl(null, Validators.required)
+      precio: new FormControl(null, Validators.required),
+      comentario: new FormControl(null)
     });
   }
 
@@ -33,6 +34,7 @@ export class GuardarPrecioComponent implements OnInit {
     let precioIngreso: PrecioIngreso = new PrecioIngreso();
 
     precioIngreso.precio = this.formPrecio.controls["precio"].value;
+    precioIngreso.comentario = this.formPrecio.controls["comentario"].value;
 
     this.registrar(precioIngreso);
   }
@@ -42,7 +44,7 @@ export class GuardarPrecioComponent implements OnInit {
       console.log("Se ha registrado el precio");
       this.dialogRef.close(true);
     },error => {
-      console.log("No se pudo registrar el precio");
+      console.log("Ha ocurrido un error al registar el precio");
     });
   }
 

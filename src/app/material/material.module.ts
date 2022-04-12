@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomDateAdapter } from './custom-adapter';
 import {MatInputModule} from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -30,7 +31,7 @@ import {MatInputModule} from '@angular/material/input';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-
+    MatTableModule
   ],
   imports: [
     CommonModule

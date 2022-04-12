@@ -27,7 +27,8 @@ export class GuardarInsumosComponent implements OnInit {
     this.formInsumos = new FormGroup({ // Formulario para vincular las variables al HTML
       proveedor: new FormControl(null, Validators.required), // Se valida que el campo este diligenciado
       marca: new FormControl(null, Validators.required),
-      producto: new FormControl(null, Validators.required)
+      producto: new FormControl(null, Validators.required),
+      comentario: new FormControl(null)
     });
   }
 
@@ -37,7 +38,7 @@ export class GuardarInsumosComponent implements OnInit {
     insumo.proveedor = this.formInsumos.controls["proveedor"].value;
     insumo.marca = this.formInsumos.controls["marca"].value;
     insumo.producto = this.formInsumos.controls["producto"].value;
-    //insumo.comentario = this.formInsumos.controls["comentario"].value;
+    insumo.comentario = this.formInsumos.controls["comentario"].value;
 
     this.registrar(insumo);
   }
@@ -47,7 +48,7 @@ export class GuardarInsumosComponent implements OnInit {
       console.log("Se ha registrado el insumo");
       this.dialogRef.close(true);
     },error => {
-      //console.log("Ha ocurrido un error al registar el insumo")
+      console.log("Ha ocurrido un error al registar el insumo")
     });
   }
 
