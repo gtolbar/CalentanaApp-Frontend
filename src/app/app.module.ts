@@ -3,31 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './pages/login/login.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { InformeComponent } from './pages/informe/informe.component';
-import { InsumoComponent } from './pages/insumo/insumo.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { DialogoInfomeComponent } from './pages/informe/dialogo-infome/dialogo-infome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InformeComponent,
-    InsumoComponent,
-    DialogoInfomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     MaterialModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    PdfViewerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

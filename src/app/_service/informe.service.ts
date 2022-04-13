@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ConsultaResumenDTO } from '../_dto/consultaResumenDTO';
 
@@ -7,6 +8,8 @@ import { ConsultaResumenDTO } from '../_dto/consultaResumenDTO';
   providedIn: 'root'
 })
 export class InformeService {
+
+  private mensajeCambio = new Subject<string>();
 
   private url: string = `${environment.HOST}/informes`;
 
@@ -22,6 +25,14 @@ export class InformeService {
     return this.http.get(`${this.url}/generarReporte?fechaInicio=${fecha}&fechaFinal=${fecha2}`,{
       responseType:'blob' //<---Respuesta en binario
     });
+  }
+
+  getMensajeCambio() {
+    return this.mensajeCambio.asObservable();
+  }
+
+  setMensajeCambio(mensaje: string) {
+    this.mensajeCambio.next(mensaje);
   }
 
 }

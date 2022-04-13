@@ -9,7 +9,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  <button mat-mini-fab color="accent" style="margin-left:15px;margin-bottom: 5px;" type="button" (click)="prueba()"><mat-icon>refresh</mat-icon></button>
+  <button mat-mini-fab color="accent" style="margin-left:15px;margin-bottom: 5px;" type="button" (click)="actualizarCanvas()"><mat-icon>refresh</mat-icon></button>
   </div>
 
   <div [hidden]="!chart" id="graph">

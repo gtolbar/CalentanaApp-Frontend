@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  HOST:"http://localhost:8081"
+  HOST:"http://localhost:8081",
+  TOKEN_AUTH_USERNAME:"calentanapp",
+  TOKEN_AUTH_PASSWORD:"calentana44p",
+  TOKEN_NAME:"access_token"
 };
 
 /*

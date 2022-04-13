@@ -5,6 +5,7 @@ import { InformeService } from 'src/app/_service/informe.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Chart, registerables } from 'chart.js';
 import * as moment from 'moment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class InformeComponent implements OnInit {
   constructor(
     private informeService:InformeService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar
 
   ) {
     Chart.register(...registerables);
@@ -32,6 +34,13 @@ export class InformeComponent implements OnInit {
       'fechaInicio': new FormControl(moment(this.maxFecha).subtract(7,'day').format('YYYY-MM-DD')),
       'fechaFinal': new FormControl(moment(this.maxFecha).format('YYYY-MM-DD'))
     });
+
+    this.informeService.getMensajeCambio().subscribe(data => {
+      this.snackBar.open(data, 'Aviso', {
+        duration: 2000,
+      });
+    });
+
     this.generarCanvas();
 
   }
@@ -43,9 +52,10 @@ export class InformeComponent implements OnInit {
     this.dialog.open(DialogoInfomeComponent,dialogConfig);
   }
 
-  prueba(){
+  actualizarCanvas(){
     this.chart.destroy();
     this.generarCanvas();
+    this.informeService.setMensajeCambio("SE ACTUALIZO GRAFICO");
   }
 
   generarCanvas(){

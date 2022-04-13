@@ -11,6 +11,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomDateAdapter } from './custom-adapter';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -28,7 +29,7 @@ import { CustomDateAdapter } from './custom-adapter';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-
+    MatSnackBarModule
 
   ],
   imports: [

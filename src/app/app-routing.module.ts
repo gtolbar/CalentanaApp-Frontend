@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InformeComponent } from './pages/informe/informe.component';
-import { InsumoComponent } from './pages/insumo/insumo.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: 'insumo', component: InsumoComponent},
-  { path: 'informe', component: InformeComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', pathMatch:'full', redirectTo:'login'},
+  { path: 'pages', component: LayoutComponent,
+  loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+  }
 ];
 
 @NgModule({
