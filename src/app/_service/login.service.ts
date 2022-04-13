@@ -23,4 +23,15 @@ export class LoginService {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').set('Authorization', 'Basic ' + btoa(environment.TOKEN_AUTH_USERNAME + ':' + environment.TOKEN_AUTH_PASSWORD))
     });
   }
+
+  estaLogueado() {
+    let token = sessionStorage.getItem(environment.TOKEN_NAME);
+    return token != null;
+  }
+
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
+
 }

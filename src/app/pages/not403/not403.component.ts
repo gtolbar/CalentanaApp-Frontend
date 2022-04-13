@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-not403',
+  templateUrl: './not403.component.html',
+  styleUrls: ['./not403.component.css']
 })
-export class InicioComponent implements OnInit {
+export class Not403Component implements OnInit {
 
   usuario: string;
 
@@ -23,5 +23,4 @@ export class InicioComponent implements OnInit {
     this.usuario = decodedToken.user_name;
 
   }
-
 }

@@ -10,6 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+
+export function tokenGetter(){
+  return sessionStorage.getItem(environment.TOKEN_NAME);
+}
 
 @NgModule({
   declarations: [
@@ -23,7 +29,14 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.HOST.substring(7)],
+        disallowedRoutes: [`http://${environment.HOST.substring(7)}/login/enviarCorreo`],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
