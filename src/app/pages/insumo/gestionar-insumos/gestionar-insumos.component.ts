@@ -1,9 +1,7 @@
-// import { EstadoInsumoService } from './../../../_service/estado-insumo.service';
+import { Insumo } from './../../../_model/insumo';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-// import { EstadoInsumo } from '../../../_model/estado_insumo';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { InsumoService } from 'src/app/_service/insumo.service';
 
 @Component({
   selector: 'app-gestionar-insumos',
@@ -12,19 +10,33 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class GestionarInsumosComponent implements OnInit {
 
-  // public insumos: EstadoInsumo[] = [];
+  encabezado: string[] = ['id','proveedor', 'marca', 'producto', 'comentario', 'accion'];
+  public insumo: Insumo[] = [];
+
+
 
   constructor(
-   // public formInsumo: FormGroup,
-    public dialog: MatDialog,
-  //  private servicioEstadoInsumo: EstadoInsumoService
+    private insumoService: InsumoService
   ) { }
 
   ngOnInit(): void {
-
+    this.listarInsumo();
   }
   public guardar(){
 
   }
+
+  private listarInsumo() {
+    this.insumoService.listar().subscribe(res => {
+      this.insumo = res;
+      console.log(res);
+    }, error => {
+      console.log("Ha ocurrido un error al listar los insumos");
+    });
+  }
+
+  public editar(){}
+
+  public eliminar(){}
 
 }

@@ -1,3 +1,4 @@
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -34,9 +36,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatSelectModule,
     MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   providers:[
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
